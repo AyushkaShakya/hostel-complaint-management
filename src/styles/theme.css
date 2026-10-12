@@ -1,0 +1,84 @@
+/* Design tokens. The four palette colours are used exactly; the extra tones
+   below are light/dark mixes of those four so everything stays on-palette. */
+:root {
+  /* Palette (from the reference image) */
+  --burgundy: #561C24;
+  --wine: #6D2932;
+  --taupe: #C7B7A3;
+  --cream: #E8D8C4;
+
+  /* Derived tones */
+  --bg: #F4EADD;            /* page: cream lightened */
+  --surface: #FCF7F0;       /* cards: cream, near white */
+  --surface-2: #EFE3D4;     /* wells, hovers: between bg and cream */
+  --line: #DDCDB9;          /* hairlines: taupe lightened */
+  --line-strong: #C7B7A3;   /* = taupe */
+  --ink: #3A161C;           /* body text: burgundy darkened */
+  --ink-soft: #6B5550;      /* secondary text */
+  --on-dark: #F3E6D6;       /* text on burgundy */
+  --on-dark-soft: #CDB5AA;
+  --burgundy-deep: #44151C; /* pressed states */
+
+  /* Shape */
+  --r-xl: 28px;
+  --r-lg: 20px;
+  --r-md: 12px;
+  --r-sm: 8px;
+  --pill: 999px;
+
+  /* Shadow tinted with burgundy, not grey */
+  --shadow-1: 0 1px 2px rgba(86, 28, 36, 0.05), 0 6px 18px -8px rgba(86, 28, 36, 0.12);
+  --shadow-2: 0 18px 40px -16px rgba(86, 28, 36, 0.32);
+  --ring: 0 0 0 3px rgba(109, 41, 50, 0.32);
+
+  /* Type */
+  --font-display: 'Young Serif', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --sidebar-w: 264px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+h1, h2, h3, h4 { margin: 0; color: var(--burgundy); font-weight: 400; }
+p { margin: 0; }
+a { color: var(--wine); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--burgundy); }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+input, select, textarea { font: inherit; }
+
+:focus-visible { outline: none; box-shadow: var(--ring); border-radius: var(--r-sm); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  background: var(--burgundy); color: var(--on-dark); padding: 10px 16px; border-radius: var(--pill);
+}
+.skip-link:focus { top: 12px; }
+
+.muted { color: var(--ink-soft); }
+.small { font-size: 0.84rem; }
+.text-wine { color: var(--wine); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
